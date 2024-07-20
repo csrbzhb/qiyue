@@ -70,6 +70,7 @@ jobs:
         echo "DEVICE_TARGET=$DEVICE_TARGET" >> $GITHUB_ENV
 
     - name: Build SDK
+      id: compile
       run: |
         cd $OPENWRT_PATH
         make sdk
