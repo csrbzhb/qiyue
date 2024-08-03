@@ -1,4 +1,4 @@
-name: FunKey-OS Build All
+name: FunKey-OS csrbzhb
 
 on:
   workflow_dispatch:
