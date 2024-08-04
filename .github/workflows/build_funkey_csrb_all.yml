@@ -101,6 +101,7 @@ jobs:
               cd $OPENWRT_PATH
               rm -rf SDK/output/
               rm -rf FunKey/output/
+              touch br.log
               cp br.log images/ -rf
               tar -jcf - download | split -b 1500m - download.tar.bz2 
               cp download.tar.bz* images/ -rf
