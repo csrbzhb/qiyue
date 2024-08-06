@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/csrbzhb/FunKey-OS.git
+  REPO_URL: https://github.com/286095742/FunKey-OS.git
   UPLOAD_BIN_DIR: true
   FIRMWARE_TAG: Funkey_OS_A33
   TZ: Asia/Shanghai
@@ -103,7 +103,7 @@ jobs:
               rm -rf FunKey/output/
               touch br.log
               cp br.log images/ -rf
-              tar -jcf - download | split -b 1500m - download.tar.bz2 
+              tar -jcf - download | split -b 2000m - download.tar.bz2 
               cp download.tar.bz* images/ -rf
               cd images
               echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
