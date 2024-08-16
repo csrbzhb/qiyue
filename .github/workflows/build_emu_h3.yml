@@ -75,6 +75,8 @@ jobs:
     - name: Organize Files(整理文件)
       if: steps.compile.outputs.status == 'success'
       run: |
+        cd $PRJ_PATH
+        echo "home dir---->> $(ls -lh)" >> $GITHUB_OUTPUT
         cd $PRJ_PATH/sources/
         tar -zcf - * | split - -b 1800m sources.tar.gz
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
