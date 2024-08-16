@@ -78,6 +78,7 @@ jobs:
         cd $PRJ_PATH/sources/
         tar -zcf - * | split - -b 1800m sources.tar.gz
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
+        echo "ls -lh---->> $(ls -lh)" >> $GITHUB_OUTPUT
 
     - name: Upload Firmware To Artifact(将固件上传到Artifact)
       if: steps.compile.outputs.status == 'success'
