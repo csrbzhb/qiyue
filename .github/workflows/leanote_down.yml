@@ -1,4 +1,4 @@
-name: FunKey-OS csrbzhb
+name: go_down
 
 on:
   workflow_dispatch:
@@ -54,6 +54,7 @@ jobs:
 
     - name: Generate Variables(生成变量)
       run: |
+        OPENWRT_PATH=`pwd`
         cd $OPENWRT_PATH
         SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
         echo "SOURCE_REPO=$SOURCE_REPO" >> $GITHUB_ENV
@@ -88,12 +89,9 @@ jobs:
       if: steps.compile.outputs.status == 'success'
       run: |
               cd $OPENWRT_PATH
-              rm -rf SDK/output/
-              rm -rf FunKey/output/
-              touch br.log
-              cp br.log images/ -rf
-              tar -jcf - download | split -b 2000m - download.tar.bz2 
-              cp download.tar.bz* images/ -rf
+              tar -jcf go.tar.bz2 go
+              tar -jcf gopackage.tar.bz2 gopackage
+              cp *.bz2 out/ -rf
               cd images
               echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
